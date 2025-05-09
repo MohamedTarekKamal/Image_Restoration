@@ -1,0 +1,15 @@
+# === Part 1: Load image and required libraries ===
+import numpy as np
+import matplotlib.pyplot as plt
+from skimage import io, img_as_float, img_as_ubyte, exposure
+from skimage.restoration import inpaint
+import cv2
+import os
+
+# Set image path and read the image in grayscale
+base_path = r'C:\Users\miado\Desktop'
+image_base_name = '9bd18077df4cbeef31ddb4b9f6977629'
+input_image_path = os.path.join(base_path, image_base_name + '.jpg')
+
+original_image = img_as_float(io.imread(input_image_path, as_gray=True))
+image_cv = img_as_ubyte(original_image)
