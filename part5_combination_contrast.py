@@ -1,0 +1,7 @@
+# === Part 5: Combine both inpainting results and enhance contrast ===
+restored_combined = 0.6 * inpainted_telea_float + 0.4 * inpainted_biharmonic_gray
+
+# Enhance contrast using both local (CLAHE) and global techniques
+restored_eq_adapthist = exposure.equalize_adapthist(restored_combined, clip_limit=0.0025)
+p2, p98 = np.percentile(restored_eq_adapthist, (10, 99.3))
+restored_contrast = exposure.rescale_intensity(restored_eq_adapthist, in_range=(p2, p98))
