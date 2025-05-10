@@ -1,0 +1,5 @@
+# === Part 4: Apply scikit-image biharmonic inpainting ===
+image_rgb = cv2.cvtColor(image_cv, cv2.COLOR_GRAY2RGB)
+mask_bool = mask.astype(bool)
+inpainted_biharmonic = inpaint.inpaint_biharmonic(image_rgb, mask_bool, channel_axis=-1)
+inpainted_biharmonic_gray = img_as_float(cv2.cvtColor(img_as_ubyte(inpainted_biharmonic), cv2.COLOR_RGB2GRAY))
