@@ -1,0 +1,4 @@
+# === Part 2: Detect cracks using edge detection and create mask ===
+edges = cv2.Canny(image_cv, 30, 150)
+kernel = np.ones((3, 3), np.uint8)
+mask = cv2.dilate(edges, kernel, iterations=2)
